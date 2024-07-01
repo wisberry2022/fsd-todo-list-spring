@@ -36,6 +36,12 @@ public class ToDoController {
         return ResponseEntity.ok().body("수정되었습니다!");
     }
 
+    @PutMapping("/conclude")
+    public ResponseEntity<String> conclude(@RequestBody List<Long> ids) {
+        service.setConclude(ids);
+        return ResponseEntity.ok().body("완료 처리 되었습니다");
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<String> delete(@PathVariable(name = "id") Long id) {
         service.removeStatus(id);

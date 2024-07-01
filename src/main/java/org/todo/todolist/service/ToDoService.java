@@ -43,6 +43,12 @@ public class ToDoService {
     }
 
     @Transactional
+    public void setConclude(List<Long> ids) {
+        List<ToDo> todos = repo.findAllById(ids);
+        todos.forEach(todo -> todo.toConcludeToDo());
+    }
+
+    @Transactional
     public void removeStatus(Long id) {
         ToDo todo = get(id);
         todo.toRemoved();
